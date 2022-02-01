@@ -1,0 +1,21 @@
+{
+    "name": "shopcat",
+    "short_name": "sc",
+    "start_url": ".",
+    "background_color": "#6dcdb1",
+    "theme_color": "#009578",
+    "display": "standalone",
+    "icons": [
+
+        {
+
+            "src": "images/logos/cat.png",
+            "sizes": "512X512",
+            "type": "image/png",
+            "purpose": "any maskable"
+        }
+
+    ]
+
+
+}
