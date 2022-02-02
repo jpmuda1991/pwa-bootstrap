@@ -42,7 +42,7 @@
          
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                 <div class="navbar-nav">
-                     <a class="add-to" href="#"><button type="button" class="btn btn-warning">Installer l'appli!</button> </a>
+                     <a class="add-to" href="#"><button class="add-button">Add app to home screen</button> </a>
                     
                 </div>
             </div>
@@ -111,21 +111,6 @@
                 navigator.serviceWorker.register('sw.js');
 
             }
-
-
-            let deferredPrompt;
-            var div = document.querySelector('.add-to');
-            div.style.display - 'none';
-            window.addEventListener('beforeinstallprompt', (e) => {
-              
-              e.preventDefault();
-              
-              deferredPrompt = e;
-            });
-
-
-
-
 
         </script>
         <script src="index.js"></script>
