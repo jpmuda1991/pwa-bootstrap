@@ -35,6 +35,26 @@
         </div>
     </nav>
 
+    
+    
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+         
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                <div class="navbar-nav">
+                     <a class="add-to" href="#"><button type="button" class="btn btn-warning">Installer l'appli!</button> </a>
+                    
+                </div>
+            </div>
+        </div>
+    </nav>
+
+
+
+
+
+
+
 
     <form>
 
@@ -91,6 +111,22 @@
                 navigator.serviceWorker.register('sw.js');
 
             }
+
+
+            let deferredPrompt;
+            var div = document.querySelector('.add-to');
+            div.style.display - 'none';
+            window.addEventListener('beforeinstallprompt', (e) => {
+              
+              e.preventDefault();
+              
+              deferredPrompt = e;
+            });
+
+
+
+
+
         </script>
         <script src="index.js"></script>
 </body>
