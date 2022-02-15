@@ -7,6 +7,7 @@ const STATIC_ASSETS = [
     'images/chartreux.jpg',
     'images/persans.jpg',
     'images/siamois.jpg',
+    'page2.html',
     'images/screenshots/1.png',
     'images/screenshots/2.png',
     'bootstrap-5.1.3-dist/css/bootstrap.min.css',
