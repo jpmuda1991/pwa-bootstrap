@@ -2,6 +2,7 @@ const CACHE_NAME = 'static cache'
 
 const STATIC_ASSETS = [
     'index.html',
+    'exemple.html',
     'index.js',
     'images/chartreux.jpg',
     'images/persans.jpg',
