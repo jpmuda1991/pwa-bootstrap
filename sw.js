@@ -3,6 +3,7 @@ const CACHE_NAME = 'static cache'
 const STATIC_ASSETS = [
     'index.html',
     'exemple.html',
+    'offline.html',
     'index.js',
     'images/chartreux.jpg',
     'images/persans.jpg',
@@ -10,6 +11,7 @@ const STATIC_ASSETS = [
     'images/cage1.jpg',
     'images/cage2.jpg',
     'images/cage3.jpg',
+    'images/sademoticion.png',
     'page2.html',
     'images/screenshots/1.png',
     'images/screenshots/2.png',
