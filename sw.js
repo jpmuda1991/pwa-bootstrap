@@ -97,4 +97,4 @@ self.addEventListener('notificationclick', function(e) {
 });
 
 
-//cette fonction va notifier l'utilisateur lorsqu'En ligne
+

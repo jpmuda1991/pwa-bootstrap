@@ -1,44 +1,37 @@
-let deferredPrompt;
-const addBtn = document.querySelector('.add-button');
-addBtn.style.display = 'none';
+console.log(Notification.permission);
 
 
+function notif(){
+  Notification.requestPermission().then(function(result){
 
-//demande a l'utilisateur la permission pour des notifications
-function displayNotification() {
-    if (Notification.permission == 'granted') {
-        navigator.serviceWorker.getRegistration().then(function(reg) {
-            reg.showNotification('Hello world!');
-        });
-    }
+  console.log("permission donnee");
+  });
 }
 
-function displayNotification() {
-    if (Notification.permission == 'granted') {
-        navigator.serviceWorker.getRegistration().then(function(reg) {
-            reg.showNotification('Hello world!');
-        });
-    }
+function sendthreadnotification(){
+
+if(Notification.permission === 'granted'){
+
+   var options = {
+
+         body:"premiere notification",
+         requireInteraction: 'true'
+         
+   };
+
+   new Notification("hello from index.js", options);
+   } else {
+
+    console.log("notification non permise");
+   }
+
+
 }
 
 
 
-function displayNotification() {
-    if (Notification.permission == 'granted') {
-        navigator.serviceWorker.getRegistration().then(function(reg) {
-            var options = {
-                body: 'La connexion internet!',
-                icon: 'images/happy.png',
-                vibrate: [100, 50, 100],
-                data: {
-                    dateOfArrival: Date.now(),
-                    primaryKey: 1
-                }
-            };
-            reg.showNotification('Hello world!', options);
-        });
-    }
-}
+
+
 
 
 
