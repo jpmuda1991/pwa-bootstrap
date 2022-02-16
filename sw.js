@@ -1,5 +1,5 @@
-const CACHE_NAME = 'static cache'
-const dynamicCache = 'site-dynamic-v1'
+const CACHE_NAME = 'site-static-v2';
+const dynamicCache = 'site-dynamic-v1';
 
 const STATIC_ASSETS = [
     'index.html',
@@ -31,8 +31,18 @@ self.addEventListener('install', event => {
 })
 
 self.addEventListener('activate', event => {
-    console.log("[sw] activated");
-})
+    event.waitUntil(
+        caches.keys().then(keys => {
+
+            return Promise.all(keys
+                .filter(key => key !== CACHE_NAME && key !== dynamicCache)
+                .map(key => caches.delete(key))
+            )
+        })
+    );
+});
+
+
 
 async function fetchAssets(event) {
 
@@ -63,3 +73,28 @@ self.addEventListener('fetch', event => {
         }).catch(() => caches.match('offline.html'))
     );
 });
+
+
+
+self.addEventListener('notificationclose', function(e) {
+    var notification = e.notification;
+    var primaryKey = notification.data.primaryKey;
+
+    console.log('Closed notification: ' + primaryKey);
+});
+
+self.addEventListener('notificationclick', function(e) {
+    var notification = e.notification;
+    var primaryKey = notification.data.primaryKey;
+    var action = e.action;
+
+    if (action === 'close') {
+        notification.close();
+    } else {
+        clients.openWindow('http://www.example.com');
+        notification.close();
+    }
+});
+
+
+//cette fonction va notifier l'utilisateur lorsqu'En ligne
