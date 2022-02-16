@@ -1,4 +1,5 @@
 const CACHE_NAME = 'static cache'
+const dynamicCache = 'site-dynamic-v1'
 
 const STATIC_ASSETS = [
     'index.html',
@@ -12,7 +13,6 @@ const STATIC_ASSETS = [
     'images/cage2.jpg',
     'images/cage3.jpg',
     'images/sademoticion.png',
-    'page2.html',
     'images/screenshots/1.png',
     'images/screenshots/2.png',
     'bootstrap-5.1.3-dist/css/bootstrap.min.css',
@@ -50,6 +50,16 @@ async function fetchAssets(event) {
 
 
 self.addEventListener('fetch', event => {
-    console.log("[sw] fetched");
-    event.respondWith(fetchAssets(event))
-})
+
+    event.respondWith(
+        caches.match(event.request).then(cachesRes => {
+            return cachesRes || fetch(event.request).then(fetchRes => {
+                return caches.open(dynamicCache).then(cache => {
+                    cache.put(event.request.url, fetchRes.clone());
+                    return fetchRes;
+                })
+
+            });
+        }).catch(() => caches.match('offline.html'))
+    );
+});
